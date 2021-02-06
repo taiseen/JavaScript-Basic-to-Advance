@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+
+<body>
+    
+    <!-- Dynamically Data Display | Data Come From Server  -->
+    <h1 id="activity"></h1>
+    <h2 id="type">
+        <!-- <a id="link" href="">Click it...</a> -->
+    </h2>
+
+    <script>
+        // 05 - Feb - 2021 
+        // Module 24.5
+        
+        const activityDOM = document.getElementById('activity');
+        const typeDOM = document.getElementById('type');
+
+        function doSomeThing() {
+            fetch('https://www.boredapi.com/api/activity')
+                .then(res => res.json())
+                .then(data => {
+
+                    activityDOM.innerText = data.activity;
+                    typeDOM.innerText = data.type;
+
+                    console.log(typeDOM.innerText);
+                })
+        }
+
+        // auto call the function after 5 second
+        setInterval(() => {
+            doSomeThing();
+        }, 5000);
+        // 5000 == 5 second
+
+    </script>
+</body>
+
+</html>

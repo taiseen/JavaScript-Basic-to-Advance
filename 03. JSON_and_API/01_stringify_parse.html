@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Object Notation</title>
+</head>
+
+<body>
+    <h1>JSON</h1>
+    <h3>JavaScript Object Notation</h3>
+    <p>Server থেকে ৯৯% Data আসবে JSON Format এ (মানে string Formate এ)। </p>
+    <p>So Server থেকে Send করা Object এর সকল key:value গুলা String Format এ থাকার কারনে ওই
+        Object এর key:value কে আলাদা করা সম্ভভ হয়ে উঠে না বা অনেক কষ্ট করতে হয়। 
+    </p>
+
+    <p>So কষ্ট থেকে রেহাই পেতে হলে use করতে হয় .parse()</p>
+    <p>Server থেকে পাঠানো Object এর পরে .parse() use করলে ওই string data টা কে JSON Object এ convert করে দিবে। </p>
+
+
+    <script>
+        // 04 - Feb - 2021 
+        // Module 24
+
+        // Simple JS Object
+        const user = { id: 101, name: 'Taiseen' }
+        console.log('JS Object : ', user);
+        // JS Object :  {id: 101, name: "Taiseen"}
+
+
+        // Convert JS Object >>to>> JSON
+        // .stringify( )
+        const jsonData = JSON.stringify(user);
+        console.log('JSON Object : ', jsonData);
+        // JSON Object :  {"id":101,"name":"Taiseen"}
+
+        // Convert JSON String >>to>> JS Object
+        // .parse( )
+        const jsObject = JSON.parse(jsonData);
+        console.log('JS Object : ', jsObject);
+        // JS Object :  {id: 101, name: "Taiseen"}
+
+
+    </script>
+
+</body>
+
+</html>

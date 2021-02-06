@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+
+<body>
+    <h1>JSON</h1>
+    <a href="https://jsonplaceholder.typicode.com/" target="_blank">JSON PlaceHolder</a>
+    <br>
+    <a href="https://jsonplaceholder.typicode.com/users/" target="_blank">JSON PlaceHolder Users</a>
+
+    <ul id="userNameContainer">
+        <!-- <li> -- Data Lode From Server | Dynamically  -->
+    </ul>
+
+    <script>
+        // 04 - Feb - 2021 
+        // Module 24
+        
+        // GET Data From Server
+        // fetch() is promise API
+        // if the API is not available you will get === 404 
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(json => displayUserNames(json))
+            .catch(error => console.log(error));
+
+        function displayUserNames(allUserNames) {
+
+            const ul = document.getElementById('userNameContainer');
+
+            // Call only 1 time
+            //const li = document.createElement('li');
+
+            // get list of Objects 
+            //console.log(allUserNames);
+
+            // get only user-names form this Object List
+            const userNames = allUserNames.map(user => user.username);
+
+            for (let i = 0; i < userNames.length; i++) {
+
+                const singleUserName = userNames[i];
+
+                // Call every-time so far as condition is true - loop
+                // (Lear New Concept)
+                const li = document.createElement('li');
+
+                // insert User Name into HTML <li> tag
+                li.innerText = singleUserName;
+
+                // insert HTML <li> tag into <ul> tag
+                ul.appendChild(li);
+
+                // (Lear New Concept)
+                //ul.appendChild(li).innerText = userName;
+                //ul.appendChild(document.createElement('li')).innerText = userName;;
+
+            }
+
+            /*  
+            const username = allUserNames.map((name) =>{
+                 
+                 const li = document.createElement('li');
+ 
+                 // insert User Name into HTML <li> tag
+                 li.innerText = name.username;
+ 
+                 // insert HTML <li> tag into <ul> tag
+                 ul.appendChild(li);
+                 //return console.log(name.username)
+                 
+             }) ;
+             // show "undefined" array
+             console.log(username); 
+             */
+
+
+            // get an array of all user name
+            //console.log(userNames);
+        }
+
+    </script>
+</body>
+
+</html>
